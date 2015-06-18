@@ -1,0 +1,26 @@
+<p>
+<h1>ALL COURSE</h1>
+</p>
+<hr/>
+
+<% @courses.each do |course| %>
+  <div class="row">
+    <div class="col-md-2">
+      <section class='user_info center'>
+        <%= gravatar_for course.user, size: 100 %>
+        <h5>User name: <%= course.user.name %></h5>
+      </section>
+    </div>
+  </div>
+  
+  <div class='col-lg-8 well'>
+    <h4><%= link_to course.name, course_path(course) %></h4>
+    <p><%= course.description %></p>
+    <p>
+      <span class='quiet'> <%= time_ago_in_words(course.created_at) %> ago</span>
+    </p>
+  </div>
+  
+  <hr/>
+
+<% end %>

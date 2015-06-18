@@ -1,0 +1,21 @@
+<%= render 'shared/pagetitle', title: @course.name %>
+<div class='row'>
+  <div class='col-md-4 pull-right center'>
+    <%= gravatar_for @course.user, size: 200 %>
+    <p>
+      <h5><%= @course.user.name %> entered this course<h5>
+    </p>
+  </div>
+  <div class='col-md-8'>
+    <%= link_to 'Edit Course Info', edit_course_path(@course), class: 'btn btn-success pull-right' %>
+    <h3>Course Rating <%= @course.rating %></h3>
+    <div class='well'>
+      <p>
+        Description
+      </p>
+      <%= simple_format(@course.description) %>
+    </div>
+  </div>
+</div>
+
+<h5><%= link_to "Return to List", courses_path, class: "btn btn-warning btn-small" %></h5>
