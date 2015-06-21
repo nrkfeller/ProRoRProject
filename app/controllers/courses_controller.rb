@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
   
   def index
-    @courses = Course.all.sort_by { |likes| likes.thumbs_up_total }.reverse
+    @courses = Course.paginate(page: params[:page], per_page: 6)
   end
   
   def show

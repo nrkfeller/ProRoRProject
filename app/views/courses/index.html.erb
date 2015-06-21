@@ -1,5 +1,7 @@
 <%= render 'shared/pagetitle', title: 'All Courses' %>
 
+<%= will_paginate %>
+
 <% @courses.each do |course| %>
   <div class="row">
     <div class="col-md-2">
@@ -14,7 +16,8 @@
     <h4><%= link_to course.name, course_path(course) %></h4>
     <p><%= course.description %></p>
     <p>
-      <span class='quiet'> <%= time_ago_in_words(course.created_at) %> ago</span>
+      <span class='quiet'> Created: <%= time_ago_in_words(course.created_at) %> ago, </span>
+      <span class='quiet'> Updated: <%= time_ago_in_words(course.updated_at) %> ago</span>
     </p>
     <div class='pull-right'>
         <%= link_to like_course_path(course, like: true), method: :post do %>
@@ -29,3 +32,5 @@
   <hr/>
 
 <% end %>
+
+<%= will_paginate %>

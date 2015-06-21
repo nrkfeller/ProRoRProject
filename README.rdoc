@@ -1,5 +1,10 @@
-i name must be presetn
-name must be 9 characters format ELEC 321
-rating must be present
-description must be present and more than 20
-ID must be present
+Users
+
+we have
+- mode and validations
+- tables with columns and name nad email
+
+we need
+- passwords
+- use email as login credetials
+- register, profile, list users, action restrictions
