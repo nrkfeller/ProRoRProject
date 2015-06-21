@@ -1,7 +1,7 @@
 <%= render 'shared/pagetitle', title: @course.name %>
 <div class='row'>
   <div class='col-md-4 pull-right center'>
-    <%= gravatar_for @course.user, size: 200 %>
+    <%= link_to gravatar_for(@course.user, size: 200), user_path(@course.user) %>
     <p>
       <h5><%= @course.user.name %> entered this course<h5>
     </p>
