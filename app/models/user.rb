@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :courses
+  has_many :likes
   before_save { self.email = email.downcase }
   validates :name, presence: true, length: {minimum: 5, maximum: 40 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i

@@ -3,7 +3,7 @@
 <% @courses.each do |course| %>
   <div class="row">
     <div class="col-md-2">
-      <section class='user_info center'>
+      <section class='user-info center'>
         <%= gravatar_for course.user, size: 100 %>
         <h5>User name: <%= course.user.name %></h5>
       </section>
@@ -16,6 +16,14 @@
     <p>
       <span class='quiet'> <%= time_ago_in_words(course.created_at) %> ago</span>
     </p>
+    <div class='pull-right'>
+        <%= link_to like_course_path(course, like: true), method: :post do %>
+          <i class='glyphicon glyphicon-thumbs-up'></i>&nbsp <%= course.thumbs_up_total %>
+        <% end %> &nbsp&nbsp&nbsp&nbsp
+        <%= link_to like_course_path(course, like: false), method: :post do %>
+          <i class='glyphicon glyphicon-thumbs-down'></i>&nbsp <%= course.thumbs_down_total %>
+        <% end %>
+      </div>
   </div>
   
   <hr/>

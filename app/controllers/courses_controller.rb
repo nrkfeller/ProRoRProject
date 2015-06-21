@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
   
   def index
-    @courses = Course.all
+    @courses = Course.all.sort_by { |likes| likes.thumbs_up_total }.reverse
   end
   
   def show
@@ -11,6 +11,7 @@ class CoursesController < ApplicationController
   def new
     @course = Course.new
   end
+  
   def create
     @course = Course.new(course_params)
     @course.user = User.find(2)
@@ -35,6 +36,13 @@ class CoursesController < ApplicationController
     else
       render :edit
     end
+  end
+  
+  def like
+    @course = Course.find(params[:id])
+    Like.create(like: params[:like], user: User.first, course: @course)
+    flash[:success] = 'You have feedbacked this course!'
+    redirect_to :back
   end
   
   private

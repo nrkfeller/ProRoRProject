@@ -17,6 +17,14 @@
         Description
       </p>
       <%= simple_format(@course.description) %>
+      <div class='pull-right'>
+        <%= link_to like_course_path(@course, like: true), method: :post do %>
+          <i class='glyphicon glyphicon-thumbs-up'></i>&nbsp <%= @course.thumbs_up_total %>
+        <% end %> &nbsp&nbsp&nbsp&nbsp
+        <%= link_to like_course_path(@course, like: false), method: :post do %>
+          <i class='glyphicon glyphicon-thumbs-down'></i>&nbsp <%= @course.thumbs_down_total %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

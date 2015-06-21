@@ -12,7 +12,11 @@ Rails.application.routes.draw do
   #get '/courses/:id', to: 'courses#show', as: 'course'
   #delete '/courses/:id', to: 'courses#destroy'
   
-  resources :courses
+  resources :courses do
+    member do 
+      post 'like'
+    end
+  end
   
 
 
