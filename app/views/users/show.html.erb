@@ -1,0 +1,29 @@
+<%= render 'shared/pagetitle', title: 'User: ' + @user.name %>
+  
+<div class='row'>
+  <div class='col-md-4 col-md-offset-4 center'>
+    <%= gravatar_for @user, size: 200 %>
+    <hr/>
+  </div>
+</div>
+
+<%= @user.courses.each do |course| %>
+  <div class='row'>
+    <div class='col-lg-6 well col-lg-offset-3'>
+      <h4><%= link_to course.name, course_path(course) %></h4>
+      <p><%= course.description %></p>
+      <p>
+        <span class='quiet'> Created: <%= time_ago_in_words(course.created_at) %> ago, </span>
+        <span class='quiet'> Updated: <%= time_ago_in_words(course.updated_at) %> ago</span>
+      </p>
+      <div class='pull-right'>
+          <%= link_to like_course_path(course, like: true), method: :post do %>
+            <i class='glyphicon glyphicon-thumbs-up'></i>&nbsp <%= course.thumbs_up_total %>
+          <% end %> &nbsp&nbsp&nbsp&nbsp
+          <%= link_to like_course_path(course, like: false), method: :post do %>
+            <i class='glyphicon glyphicon-thumbs-down'></i>&nbsp <%= course.thumbs_down_total %>
+          <% end %>
+        </div>
+    </div>
+  </div>
+<% end %>

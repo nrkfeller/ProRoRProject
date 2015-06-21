@@ -16,3 +16,10 @@ Workflow
   
 45 authenticate (contd)
   usercontroller newhtml, edthtml, _form
+  
+46 edit users
+  edit + update logic in usercontroller
+  
+47 show user
+  user profile pic, and courses created
+  showhtml, usercontroller
