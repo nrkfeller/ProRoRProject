@@ -21,5 +21,10 @@ Workflow
   edit + update logic in usercontroller
   
 47 show user
-  user profile pic, and courses created
+  user profile pic, and courses created, pagination
   showhtml, usercontroller
+  
+48 adding paths
+  paths in the html pages
+  
+50 logina nd logout
