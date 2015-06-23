@@ -1,11 +1,13 @@
 class CoursesController < ApplicationController
+  before_action :set_course, only: [:edit, :update, :show, :like]
+  before_action :require_user, except: [:show, :index] #so users that are not logged in can still browse and stuff
+  before_action :require_same_user, only: [:edit, :update]
   
   def index
     @courses = Course.paginate(page: params[:page], per_page: 6)
   end
   
   def show
-    @course = Course.find(params[:id])
   end
   
   def new
@@ -14,7 +16,7 @@ class CoursesController < ApplicationController
   
   def create
     @course = Course.new(course_params)
-    @course.user = User.find(2)
+    @course.user = current_user
     
     if @course.save
       flash[:success] = "Course Created!"
@@ -25,11 +27,9 @@ class CoursesController < ApplicationController
   end
   
   def edit
-    @course = Course.find(params[:id])
   end
   
   def update
-    @course = Course.find(params[:id])
     if @course.update(course_params)
       flash[:success] = 'Updated Successfully!'
       redirect_to course_path(@course)
@@ -39,8 +39,7 @@ class CoursesController < ApplicationController
   end
   
   def like
-    @course = Course.find(params[:id])
-    Like.create(like: params[:like], user: User.first, course: @course)
+    Like.create(like: params[:like], user: current_user, course: @course)
     flash[:success] = 'You have feedbacked this course!'
     redirect_to :back
   end
@@ -49,6 +48,17 @@ class CoursesController < ApplicationController
   
     def course_params
       params.require(:course).permit(:name, :rating, :description, :picture)
+    end
+    
+    def set_course
+      @course = Course.find(params[:id])
+    end
+    
+    def require_same_user
+      if current_user != @course.user
+        flash[:danger] = 'You can only edit your own courses'
+        redirect_to course_path
+      end
     end
   
 end

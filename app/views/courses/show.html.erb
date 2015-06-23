@@ -7,7 +7,9 @@
     </p>
   </div>
   <div class='col-md-8'>
-    <%= link_to 'Edit Course Info', edit_course_path(@course), class: 'btn btn-success pull-right' %>
+    <% if logged_in? and @course.user == current_user %>
+      <%= link_to 'Edit Course Info', edit_course_path(@course), class: 'btn btn-success pull-right' %>
+    <% end %>
     <h3>Course Rating <%= @course.rating %></h3>
     <div class='show_course'>
       <%= image_tag(@course.picture.url, class: 'gravatar') if @course.picture? %>

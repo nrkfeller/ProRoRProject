@@ -27,4 +27,15 @@ Workflow
 48 adding paths
   paths in the html pages
   
-50 logina nd logout
+50 login and logout
+
+52 log in restrictions
+  redirecting and restrictions and paths
+  appcontroller, usercontroller, _navigation, pagescontroller, homehtml
+  
+54 require same user method + set_user
+  usercontroller
+  
+55 require same user for courses, restriction on making a new course
+  coursecontroller
+  all safety features done, all paths for smooth navigation through the appcontroller
