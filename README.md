@@ -42,3 +42,6 @@ Workflow
 
 56 list chefs
   using tabs for users and courses. for better navigation
+  
+57-60 setting up AWS & dploying on heroku
+  picture uploader, carrierwave.rb, gemfile, and AWS.amazon.com
