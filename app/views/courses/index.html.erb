@@ -1,5 +1,14 @@
 <%= render 'shared/pagetitle', title: 'All Courses' %>
 
+<ul class='nav nav-tabs'>
+  <li class='active'>
+    <%= link_to 'Courses', courses_path %>
+  </li>
+  <li>
+    <%= link_to 'Users', users_path %>
+  </li>
+</ul>
+
 <%= will_paginate %>
 
 <% @courses.each do |course| %>

@@ -40,4 +40,5 @@ Workflow
   coursecontroller
   all safety features done, all paths for smooth navigation through the appcontroller
 
-56
+56 list chefs
+  using tabs for users and courses. for better navigation
