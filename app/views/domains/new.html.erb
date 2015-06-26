@@ -1,0 +1,16 @@
+<%= render 'shared/pagetitle', title: 'Create new Domain' %>
+
+<%= render 'shared/errors', obj: @domain %>
+
+<div class='row'>
+  <div class='well col-md-8 col-md-offset-2'>
+    <%= form_for @domain do |f| %>
+    
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      
+      <%= f.submit 'Create Domain', class: 'btn btn-success' %>
+      
+    <% end %>
+  </div>
+</div>

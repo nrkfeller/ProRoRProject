@@ -43,5 +43,13 @@ Workflow
 56 list chefs
   using tabs for users and courses. for better navigation
   
-57-60 setting up AWS & dploying on heroku
+57-59 setting up AWS & dploying on heroku
   picture uploader, carrierwave.rb, gemfile, and AWS.amazon.com
+  
+60 many to many in db layer
+  4 new migrations, domain and prereq models, course_domain and course_prereqs, course model
+  
+63 creating new Domains and Prereqs
+  setting up controller and views and routes
+  
+64 forms for Domains and Prereqs

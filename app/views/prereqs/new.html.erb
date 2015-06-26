@@ -1,0 +1,16 @@
+<%= render 'shared/pagetitle', title: 'Create new Prereqs' %>
+
+<%= render 'shared/errors', obj: @prereq %>
+
+<div class='row'>
+  <div class='well col-md-8 col-md-offset-2'>
+    <%= form_for @prereq do |f| %>
+    
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      
+      <%= f.submit 'Create Prereq', class: 'btn btn-success' %>
+      
+    <% end %>
+  </div>
+</div>
