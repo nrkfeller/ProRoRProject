@@ -53,3 +53,10 @@ Workflow
   setting up controller and views and routes
   
 64 forms for Domains and Prereqs
+
+66-67 navigation bar dropdow menu
+  nav partial and customscss - access to new restricted to logged in users - overwrite before action for likes
+  
+69-70 updated styles and CSS display chockboxes
+  indexhtml, shohtml, _form, customscss
+  

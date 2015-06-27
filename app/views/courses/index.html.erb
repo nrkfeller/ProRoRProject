@@ -24,8 +24,12 @@
   <div class='col-lg-8 well'>
     <h4><%= link_to course.name, course_path(course) %></h4>
     <p><%= course.description %></p>
-    <p>Domain: <%= render course.domains %></p>
-    <p>Prerequisites: <%= render course.prereqs %></p>
+    <% if course.domains.any? %>
+        <p>Domain: <%= render course.domains %></p>
+      <% end %>
+      <% if course.prereqs.any? %>
+        <p>Prerequisites: <%= render course.prereqs %></p>
+      <% end %>
     <p>
       <span class='quiet'> Created: <%= time_ago_in_words(course.created_at) %> ago, </span>
       <span class='quiet'> Updated: <%= time_ago_in_words(course.updated_at) %> ago</span>
