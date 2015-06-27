@@ -3,6 +3,7 @@ class CoursesController < ApplicationController
   before_action :require_user, except: [:show, :index, :like]#so users that are not logged in can still browse and stuff
   before_action :require_user_like, only: [:like]
   before_action :require_same_user, only: [:edit, :update]
+  before_action :admin_user, only: [:destroy]
   
   def index
     @courses = Course.paginate(page: params[:page], per_page: 6)
@@ -45,6 +46,12 @@ class CoursesController < ApplicationController
     redirect_to :back
   end
   
+  def destroy
+    Course.find(params[:id]).destroy
+    flash[:success] = 'Course Deleted'
+    redirect_to courses_path
+  end
+  
   private
   
     def course_params
@@ -56,7 +63,7 @@ class CoursesController < ApplicationController
     end
     
     def require_same_user
-      if current_user != @course.user
+      if current_user != @course.user and !current_user.admin?
         flash[:danger] = 'You can only edit your own courses'
         redirect_to course_path
       end
@@ -67,6 +74,10 @@ class CoursesController < ApplicationController
         flash[:danger] = 'You must be logged in'
         redirect_to :back
       end
+    end
+    
+    def admin_user
+      redirect_to courses_path unless current_user.admin?
     end
   
 end

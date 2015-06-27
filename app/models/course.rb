@@ -1,9 +1,9 @@
 class Course < ActiveRecord::Base
   belongs_to :user
-  has_many :likes
-  has_many :course_domains
+  has_many :likes, dependent: :destroy
+  has_many :course_domains, dependent: :destroy
   has_many :domains, through: :course_domains
-  has_many :course_prereqs
+  has_many :course_prereqs, dependent: :destroy
   has_many :prereqs, through: :course_prereqs
   validates :user_id, presence: true
   validates :name, presence: true, length: {minimum:9, maximum: 9 }

@@ -57,6 +57,10 @@ Workflow
 66-67 navigation bar dropdow menu
   nav partial and customscss - access to new restricted to logged in users - overwrite before action for likes
   
-69-70 updated styles and CSS display chockboxes
+68-69 updated styles and CSS display chockboxes
   indexhtml, shohtml, _form, customscss
+  
+70 administrator permissions
+  Create an admin that can change edit everything and delete items
+  - add migration admin - coursecontroller(current_user action) - courses.show.html
   

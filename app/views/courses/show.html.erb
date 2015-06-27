@@ -7,8 +7,11 @@
     </p>
   </div>
   <div class='col-md-8'>
-    <% if logged_in? and @course.user == current_user %>
+    <% if logged_in? and @course.user == current_user || current_user.admin? %>
       <%= link_to 'Edit Course Info', edit_course_path(@course), class: 'btn btn-success pull-right' %>
+    <% end %>
+    <% if current_user.admin? %>
+      <%= link_to '[DELETE COURSE]', @course, method: :delete, data: { confirm: 'Are You Sure?' } %>
     <% end %>
     <h3>Course Rating <%= @course.rating %></h3>
     <div class='show_course'>
