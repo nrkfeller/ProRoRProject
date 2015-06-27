@@ -1,4 +1,5 @@
 class PrereqsController < ApplicationController
+  before_action :require_user, except: [:show]
   
   def show
     @prereq = Prereq.find(params[:id])

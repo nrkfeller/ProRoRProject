@@ -15,6 +15,8 @@
       <%= image_tag(@course.picture.url, class: 'gravatar') if @course.picture? %>
     </div>
     <div class='well'>
+      <p>Domain: <%= render @course.domains %></p>
+      <p>Prerequisites: <%= render @course.prereqs %></p>
       <p>
         Description
       </p>

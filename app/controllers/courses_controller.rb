@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:edit, :update, :show, :like]
-  before_action :require_user, except: [:show, :index] #so users that are not logged in can still browse and stuff
+  before_action :require_user, except: [:show, :index, :like]#so users that are not logged in can still browse and stuff
+  before_action :require_user_like, only: [:like]
   before_action :require_same_user, only: [:edit, :update]
   
   def index
@@ -47,7 +48,7 @@ class CoursesController < ApplicationController
   private
   
     def course_params
-      params.require(:course).permit(:name, :rating, :description, :picture)
+      params.require(:course).permit(:name, :rating, :description, :picture, domain_ids: [], prereq_ids: [])
     end
     
     def set_course
@@ -58,6 +59,13 @@ class CoursesController < ApplicationController
       if current_user != @course.user
         flash[:danger] = 'You can only edit your own courses'
         redirect_to course_path
+      end
+    end
+    
+    def require_user_like
+      if !logged_in?
+        flash[:danger] = 'You must be logged in'
+        redirect_to :back
       end
     end
   

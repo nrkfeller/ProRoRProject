@@ -3,12 +3,49 @@
 <header class="navbar navbar-fixed-top navbar-default">
     <div class-="container">
       <%= link_to "Course Reviewer", root_path, class: "btn btn-lg btn-success", id: "logo" %>
-    <div class="nav-item">
-      <%= link_to "link1", "", class: "btn btn-default border-blue" %>
-    </div>
-    <div class="nav-item">
-      <%= link_to "link1", "", class: "btn btn-default border-blue" %>
-    </div>
+      
+    <ul class="nav-ul-item">
+      <li class="dropdown">
+					<%= link_to "#", class: "btn btn-default border-danger dropdown-toggle", "data-toggle" => "dropdown" do %>
+					Domains <b class="caret"></b>
+					<% end %>
+					<ul class="dropdown-menu">
+						<% Domain.all.each do |domain| %>
+							<li><%= link_to domain.name, domain_path(domain) %></li>
+						<% end %>
+						<% if logged_in? %>
+							<li class='divider'></li>
+								<li>
+										<%=link_to(new_domain_path) do %>
+											New Domain
+										<% end %>
+								</li>
+						<% end %>
+					</ul>
+				</li>
+    </ul>
+    
+    
+    <ul class="nav-ul-item">
+      <li class="dropdown">
+					<%= link_to "#", class: "btn btn-default border-danger dropdown-toggle", "data-toggle" => "dropdown" do %>
+					Prerequisites <b class="caret"></b>
+					<% end %>
+					<ul class="dropdown-menu">
+						<% Prereq.all.each do |prereq| %>
+							<li><%= link_to prereq.name, prereq_path(prereq) %></li>
+						<% end %>
+						<% if logged_in? %>
+							<li class='divider'></li>
+								<li>
+										<%=link_to(new_prereq_path) do %>
+											New Prerequisites
+										<% end %>
+								</li>
+						<% end %>
+					</ul>
+				</li>
+    </ul>
     
     <% if logged_in? %>
 			<div class="nav-item">

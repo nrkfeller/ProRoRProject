@@ -1,4 +1,5 @@
 class DomainsController < ApplicationController
+  before_action :require_user, except: [:show]
   
   def show
     @domain = Domain.find(params[:id])
