@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   
   resources :users, except: [:new, :destroy]
   
+  
   get '/register', to: 'users#new'
   
   get '/login', to: 'logins#new'
@@ -29,6 +30,8 @@ Rails.application.routes.draw do
   resources :domains, only: [:new, :create, :show]
   
   resources :prereqs, only: [:new, :create, :show]
+  
+  #resources :prereqs, only: [:new, :create, :show]  --- do this for reviews
 
 
 end
