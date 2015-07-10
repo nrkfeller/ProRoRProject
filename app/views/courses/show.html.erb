@@ -36,6 +36,31 @@
           <i class='glyphicon glyphicon-thumbs-down'></i>&nbsp <%= @course.thumbs_down_total %>
         <% end %>
       </div>
+      <hr/>
+      
+      
+      <h3>
+        <%= @course.reviews.count %> Reviews
+      </h3>
+      <% if @course.reviews.any? %>
+        <% @course.reviews.each do |review| %>
+            <p><%= review.body %></p>
+            <p>Submitted <%= time_ago_in_words(review.created_at)%> ago by <%= review.user.email %></p>
+            <!-- <% if review.user == current_user %> -->
+                <!-- <%= link_to "Delete", review, method: :delete, data: {confirm: 'Are You Sure?'} %> -->
+            <!-- <% end %> -->
+            <hr/>
+        <% end %>
+      <% end %>
+      <%= simple_form_for [@course, Review.new] do |f| %>
+        <div>
+          <%= f.text_area :body %>
+        </div>
+        <br>
+        <%= f.submit "Add Review" %>
+      <% end %>
+      
+      
     </div>
   </div>
 </div>

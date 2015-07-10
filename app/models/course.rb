@@ -1,5 +1,6 @@
 class Course < ActiveRecord::Base
   belongs_to :user
+  has_many :reviews
   has_many :likes, dependent: :destroy
   has_many :course_domains, dependent: :destroy
   has_many :domains, through: :course_domains

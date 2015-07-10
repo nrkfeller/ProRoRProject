@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150627201431) do
+ActiveRecord::Schema.define(version: 20150710193111) do
 
   create_table "course_domains", force: true do |t|
     t.integer "domain_id"
@@ -48,6 +48,17 @@ ActiveRecord::Schema.define(version: 20150627201431) do
   create_table "prereqs", force: true do |t|
     t.string "name"
   end
+
+  create_table "reviews", force: true do |t|
+    t.integer  "course_id"
+    t.text     "body"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reviews", ["course_id"], name: "index_reviews_on_course_id"
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "name"

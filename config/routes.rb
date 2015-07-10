@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :reviews
+
   root 'pages#home'
   
   get '/home', to: 'pages#home'
@@ -16,6 +18,7 @@ Rails.application.routes.draw do
     member do 
       post 'like'
     end
+    resources :reviews
   end
   
   resources :users, except: [:new, :destroy]

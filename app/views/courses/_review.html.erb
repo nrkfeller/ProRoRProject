@@ -1,0 +1,7 @@
+<%= div_for(review) do %>
+    <p><%= review.body %></p>
+    <p>Submitted <%= time_ago_in_words(review.created_at)%> ago by <%= review.user.email %></p>
+    <% if review.user == current_user %>
+        <%= link_to "Delete", review, method: :delete, data: {confirm: 'Are You Sure?'} %>
+    <% end %>
+<% end %>
